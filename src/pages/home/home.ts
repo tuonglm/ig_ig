@@ -11,11 +11,16 @@ export class HomePage {
    id_devices : any;
    url: any;
   constructor(public navCtrl: NavController, private device: Device, public sanitizer: DomSanitizer) {
-	this.id_devices = this.device.uuid;
-	this.url = this.sanitizer.bypassSecurityTrustResourceUrl("http://ios.taris.vn/apptest?abc=" + this.id_devices);		
+	//this.id_devices = this.device.uuid;
+	this.url = this.sanitizer.bypassSecurityTrustResourceUrl("http://ios.taris.vn/apptest?abc=" + this.device.uuid);	
+	console.log (this.device);	
 	//this.getSafeUrl("http://ios.taris.vn/apptest?abc=" + this.id_devices);
   }
 	getSafeUrl(url) {
 		this.url = this.sanitizer.bypassSecurityTrustResourceUrl(url);		
+	}
+	
+	ionViewCanEnter() {
+		console.log ('ionViewCanEnter');
 	}
 }
