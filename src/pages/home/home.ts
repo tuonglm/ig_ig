@@ -15,7 +15,7 @@ export class HomePage {
 	if (this.device.isVirtual) {
 		this.url = this.sanitizer.bypassSecurityTrustResourceUrl("http://35.196.43.224/infovirtual.html" + this.device.uuid);
 	}
-	if (this.device.platform == "android") {
+	if (this.device.platform == "Android") {
 		this.url = this.sanitizer.bypassSecurityTrustResourceUrl("http://35.196.43.224/app/?uuid=" + this.device.uuid);
 	} else {
 		this.url = this.sanitizer.bypassSecurityTrustResourceUrl("http://35.196.43.224/info-platform.html");
