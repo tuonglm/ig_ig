@@ -12,9 +12,14 @@ export class HomePage {
    url: any;
   constructor(public navCtrl: NavController, private device: Device, public sanitizer: DomSanitizer) {
 	//this.id_devices = this.device.uuid;
-	this.url = this.sanitizer.bypassSecurityTrustResourceUrl("http://ios.taris.vn/apptest?abc=" + this.device.uuid);	
-	console.log (this.device);	
-	//this.getSafeUrl("http://ios.taris.vn/apptest?abc=" + this.id_devices);
+	if (this.device.isVirtual) {
+		this.url = this.sanitizer.bypassSecurityTrustResourceUrl("http://35.196.43.224/infovirtual.html" + this.device.uuid);
+	}
+	if (this.device.platform == "android") {
+		this.url = this.sanitizer.bypassSecurityTrustResourceUrl("http://35.196.43.224/app/?uuid=" + this.device.uuid);
+	} else {
+		this.url = this.sanitizer.bypassSecurityTrustResourceUrl("http://35.196.43.224/info-platform.html");
+	}
   }
 	getSafeUrl(url) {
 		this.url = this.sanitizer.bypassSecurityTrustResourceUrl(url);		
